@@ -1,0 +1,2034 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kitchen | Gourmet Burgers & More</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff6b35;
+            --secondary: #f4e285;
+            --dark: #1a1a1a;
+            --light: #f8f8f8;
+            --accent: #5b8c5a;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+            h2:after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 4px;
+                background: var(--primary);
+            }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+            .btn:hover {
+                background: #e55a2b;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+            .logo span {
+                color: var(--primary);
+            }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+            nav ul li {
+                margin-left: 30px;
+            }
+
+                nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: color 0.3s ease;
+                }
+
+                    nav ul li a:hover {
+                        color: var(--primary);
+                    }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section with Animated Welcome */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('imagess/burger fries and wings.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .welcome-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+
+        .hero .btn {
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Menu Section */
+        .menu {
+            position: relative;
+            background: var(--light);
+            overflow: hidden;
+            z-index: 0;
+        }
+
+            .menu::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: url('imagess/imagess/log.jpg') center/contain no-repeat;
+                opacity: 0.5; /* soft and natural */
+                z-index: -1; /* behind everything */
+                pointer-events: none;
+            }
+
+            .menu .container {
+                position: relative;
+                z-index: 1;
+            }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 12px 25px;
+            background: white;
+            border: none;
+            margin: 0 10px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+            .menu-tab.active {
+                background: var(--primary);
+                color: white;
+            }
+
+            .menu-tab:hover:not(.active) {
+                background: #f0f0f0;
+            }
+
+        .menu-items-container {
+            position: relative;
+            min-height: 600px;
+        }
+
+        .menu-category {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+            .menu-category.active {
+                opacity: 1;
+                transform: translateX(0);
+                pointer-events: all;
+                position: relative;
+            }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideInItem 0.6s ease forwards;
+        }
+
+        @keyframes slideInItem {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item-image {
+            height: 200px;
+            overflow: hidden;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .menu-item-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-title {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+            .add-to-cart:hover {
+                background: #e55a2b;
+            }
+
+        /* Specials Section */
+        .specials {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('imagess/the almighty burgerr.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+
+            .specials h2 {
+                color: white;
+            }
+
+                .specials h2:after {
+                    background: var(--secondary);
+                }
+
+        .specials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .special-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+            .special-item:hover {
+                transform: translateY(-10px);
+            }
+
+        .special-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        /* Location Section */
+        .location {
+            background-color: white;
+        }
+
+        .location-content {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .location-info {
+            flex: 1;
+        }
+
+        .location-map {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+            .location-map iframe {
+                width: 100%;
+                height: 400px;
+                border: none;
+            }
+
+        .hours {
+            margin-top: 30px;
+        }
+
+            .hours ul {
+                list-style: none;
+            }
+
+            .hours li {
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+            }
+
+        /* Checkout Section */
+        .checkout {
+            background-color: var(--light);
+        }
+
+        .checkout-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .order-summary {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .customer-info {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+                padding: 12px 15px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1rem;
+            }
+
+        .cart-items {
+            margin: 20px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .remove-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .total {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: right;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .payment-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .payment-option {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .payment-option.selected {
+                border-color: var(--primary);
+                background: rgba(255, 107, 53, 0.1);
+            }
+
+            .payment-option i {
+                font-size: 2rem;
+                margin-bottom: 10px;
+                color: var(--primary);
+            }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+            .about-image img {
+                width: 100%;
+                height: auto;
+                display: block;
+                transition: transform 0.5s ease;
+            }
+
+            .about-image:hover img {
+                transform: scale(1.05);
+            }
+
+        /* Popup Modal Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+            .close-popup:hover {
+                color: #b40000;
+            }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+            .popup-buttons .btn {
+                flex: 1;
+                text-align: center;
+            }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+            .footer-column h3 {
+                color: var(--secondary);
+                margin-bottom: 20px;
+                font-size: 1.3rem;
+            }
+
+            .footer-column ul {
+                list-style: none;
+            }
+
+                .footer-column ul li {
+                    margin-bottom: 10px;
+                }
+
+                    .footer-column ul li a {
+                        color: #ccc;
+                        text-decoration: none;
+                        transition: color 0.3s ease;
+                    }
+
+                        .footer-column ul li a:hover {
+                            color: var(--primary);
+                        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+            .social-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                color: white;
+                transition: all 0.3s ease;
+            }
+
+                .social-links a:hover {
+                    background: var(--primary);
+                    transform: translateY(-3px);
+                }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .location-content {
+                flex-direction: column;
+            }
+
+            .checkout-container {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .menu-tabs {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .menu-tab {
+                width: 200px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Pickup Only Warning */
+        .pickup-warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            color: #856404;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .pickup-only-item {
+            position: relative;
+        }
+
+        .pickup-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        /* Sit Down/Takeaway Options */
+        .dining-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .dining-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .dining-option.selected {
+                border-color: var(--primary);
+                background: rgba(255, 107, 53, 0.1);
+            }
+
+        .sitdown-required {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            color: #856404;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">The <span>Kitchen</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#specials">Specials</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#checkout">Order Now</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="welcome-message">Welcome to</p>
+            <h1>The Kitchen</h1>
+            <p>Experience the finest gourmet burgers, wings, wraps, and more in a unique culinary atmosphere</p>
+            <a href="#menu" class="btn">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-category="burgers">Burgers</button>
+                <button class="menu-tab" data-category="combos">Combos</button>
+                <button class="menu-tab" data-category="wings">Wings</button>
+                <button class="menu-tab" data-category="wraps">Wraps</button>
+                <button class="menu-tab" data-category="sides">Sides & More</button>
+            </div>
+
+            <div class="menu-items-container">
+                <!-- Burgers Category -->
+                <div class="menu-category active" id="burgers-category">
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/almighty.jpg" alt="The Almighty Burger">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">The Almighty Burger</h3>
+                                <span class="menu-item-price">R85</span>
+                            </div>
+                            <p>Our signature burger with triple patty, bacon, cheese, and special sauce</p>
+                            <button class="add-to-cart" data-item="The Almighty Burger" data-price="85">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/beefBurger.jpg" alt="Beef Burger">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Beef Burger</h3>
+                                <span class="menu-item-price">R35</span>
+                            </div>
+                            <p>Juicy beef patty with fresh vegetables and your choice of sauce</p>
+                            <button class="add-to-cart" data-item="Beef Burger" data-price="35">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/doubleBurger.jpg" alt="Double Beef Burger">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Double Beef Burger</h3>
+                                <span class="menu-item-price">R50</span>
+                            </div>
+                            <p>Two beef patties, double cheese, and all the fixings</p>
+                            <button class="add-to-cart" data-item="Double Beef Burger" data-price="50">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/tripleSmashBurger.jpg" alt="Triple Smash Burger">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Triple Smash Burger</h3>
+                                <span class="menu-item-price">R65</span>
+                            </div>
+                            <p>Three smashed patties with cheese, pickles, and special sauce</p>
+                            <button class="add-to-cart" data-item="Triple Smash Burger" data-price="65">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Combo Deals Section -->
+                <div class="menu-category" id="combos-category">
+                    <!-- Combo 1 -->
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/burger fries and wings.jpg" alt="Combo 1">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Combo 1</h3>
+                                <span class="menu-item-price">R120</span>
+                            </div>
+                            <p>Any 1 Burger, Chips & wings</p>
+                            <button class="add-to-cart" data-item="Combo 1 (Burger + Chips + wings)" data-price="120">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Combo 2 -->
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/imagess/burger wings and friess.jpg" alt="Combo 2">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Combo 2</h3>
+                                <span class="menu-item-price">R150</span>
+                            </div>
+                            <p>Any 1 double beef Burgers, 1 Regular Chips & wings</p>
+                            <button class="add-to-cart" data-item="Combo 2 (double beef Burgers + Chips + wings )" data-price="150">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Combo 3 -->
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/imagess/all in one.jpg" alt="Combo 3">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Combo 3</h3>
+                                <span class="menu-item-price">R229</span>
+                            </div>
+                            <p>4 Beef Burgers, 2 Regular Chips & 4 Drinks</p>
+                            <button class="add-to-cart" data-item="Combo 3 (4 Burgers + 2 Chips + 4 Drinks)" data-price="229">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Original Combos -->
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/wings.jpg" alt="wings & Fries Combo">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">wings & Fries Combo</h3>
+                                <span class="menu-item-price">R55</span>
+                            </div>
+                            <p>wings with a side of crispy fries</p>
+                            <button class="add-to-cart" data-item="wings & Fries Combo" data-price="55">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/imagess/spp.jpg" alt="Almighty Combo">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Almighty Burger Combo</h3>
+                                <span class="menu-item-price">R140</span>
+                            </div>
+                            <p>Almighty Burger, Fries & Mocktail</p>
+                            <button class="add-to-cart" data-item="Almighty Burger Combo" data-price="140">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Wings Category -->
+                <div class="menu-category" id="wings-category">
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/wings.jpg" alt="Chicken Wings">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Chicken Wings</h3>
+                                <span class="menu-item-price">R60 / R80 / R120</span>
+                            </div>
+                            <p>Crispy chicken wings with your choice of sauce - mild, hot, or BBQ</p>
+                            <div style="display: flex; gap: 5px;">
+                                <button class="add-to-cart" data-item="Chicken Wings (Small)" data-price="60">Small</button>
+                                <button class="add-to-cart" data-item="Chicken Wings (Medium)" data-price="80">Medium</button>
+                                <button class="add-to-cart" data-item="Chicken Wings (Large)" data-price="120">Large</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wraps Category -->
+                <div class="menu-category" id="wraps-category">
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/wrap.jpg" alt="Chicken Wrap">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Chicken Wrap</h3>
+                                <span class="menu-item-price">R50</span>
+                            </div>
+                            <p>Grilled chicken, fresh veggies, and sauce wrapped in a soft tortilla</p>
+                            <button class="add-to-cart" data-item="Chicken Wrap" data-price="50">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/wrapppp.jpg" alt="Beef Wrap">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Beef Wrap</h3>
+                                <span class="menu-item-price">R55</span>
+                            </div>
+                            <p>Seasoned beef, lettuce, tomato, and cheese in a warm wrap</p>
+                            <button class="add-to-cart" data-item="Beef Wrap" data-price="55">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sides Category -->
+                <!-- Sides Category -->
+                <div class="menu-category" id="sides-category">
+                    <!-- Chips with Size Options -->
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/imagess/fries.jpg" alt="Crispy Chips">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Chips</h3>
+                                <span class="menu-item-price">R25 / R35 / R45</span>
+                            </div>
+                            <p>Crispy golden chips - perfectly seasoned</p>
+                            <div style="display: flex; gap: 5px; margin-top: 10px;">
+                                <button class="add-to-cart" data-item="Small Chips" data-price="25">Small - R25</button>
+                                <button class="add-to-cart" data-item="Regular Chips" data-price="35">Regular - R35</button>
+                                <button class="add-to-cart" data-item="Large Chips" data-price="45">Large - R45</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/HotDog.jpg" alt="Hot Dog">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Hot Dog</h3>
+                                <span class="menu-item-price">R25</span>
+                            </div>
+                            <p>Classic hot dog with your choice of toppings</p>
+                            <button class="add-to-cart" data-item="Hot Dog" data-price="25">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/wings.jpg" alt="Chicken Wings">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Chicken Wings</h3>
+                                <span class="menu-item-price">R60 / R80 / R120</span>
+                            </div>
+                            <p>Crispy chicken wings with your choice of sauce</p>
+                            <div style="display: flex; gap: 5px;">
+                                <button class="add-to-cart" data-item="Chicken Wings (6pcs)" data-price="60">6pcs - R60</button>
+                                <button class="add-to-cart" data-item="Chicken Wings (10pcs)" data-price="80">10pcs - R80</button>
+                                <button class="add-to-cart" data-item="Chicken Wings (15pcs)" data-price="120">15pcs - R120</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beverages -->
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/cocktailss...jpg" alt="Cocktail Drink">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Cocktail</h3>
+                                <span class="menu-item-price">R35</span>
+                            </div>
+                            <p>Refreshing cocktail to complement your meal</p>
+                            <button class="add-to-cart" data-item="Cocktail" data-price="35">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/drink.jpg" alt="Mocktail Drink">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Mocktail</h3>
+                                <span class="menu-item-price">R30</span>
+                            </div>
+                            <p>Non-alcoholic refreshing beverage</p>
+                            <button class="add-to-cart" data-item="Mocktail" data-price="30">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <figure class="menu-item-image">
+                            <img src="imagess/drinkkk.jpg" alt="Orange Juice">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Orange Juice</h3>
+                                <span class="menu-item-price">R25</span>
+                            </div>
+                            <p>Freshly squeezed orange juice</p>
+                            <button class="add-to-cart" data-item="Orange Juice" data-price="25">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Hubbly Item - Sit Down Only -->
+                    <div class="menu-item pickup-only-item">
+                        <div class="pickup-badge">SIT DOWN ONLY</div>
+                        <figure class="menu-item-image">
+                            <img src="imagess/hubbly.jpg" alt="Hubbly">
+                        </figure>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Hubbly Set</h3>
+                                <span class="menu-item-price">R70</span>
+                            </div>
+                            <p>Complete hubbly set with your choice of flavor - for in-store sit down only</p>
+                            <button class="add-to-cart" data-item="Hubbly Set" data-price="70" data-sitdown-only="true">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specials Section -->
+    <section class="specials" id="specials">
+        <div class="container">
+            <h2>Today's Specials</h2>
+            <div class="specials-grid">
+                <div class="special-item">
+                    <div class="special-icon">
+                        <i class="fas fa-hamburger"></i>
+                    </div>
+                    <h3>Burger & Fries Combo</h3>
+                    <p>Any burger with a side of crispy fries and a drink</p>
+                    <p class="menu-item-price">R55</p>
+                </div>
+
+                <div class="special-item">
+                    <div class="special-icon">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <h3>Wing Wednesday</h3>
+                    <p>20% off all wings every Wednesday</p>
+                    <p class="menu-item-price">20% OFF</p>
+                </div>
+
+                <div class="special-item">
+                    <div class="special-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Family Feast</h3>
+                    <p>4 burgers, 2 large fries, and 10 wings - perfect for sharing</p>
+                    <p class="menu-item-price">R180</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="container">
+            <h2>Find Us</h2>
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Visit The Kitchen</h3>
+                    <p>We're located in the heart of the city, ready to serve you the best burgers and wings around.</p>
+
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/fT61x6fkVHuWUwk68" target="_blank">View on Google Maps</a></p>
+                        <p><i class="fas fa-phone"></i> 079 094 3751</p>
+                        <p><i class="fas fa-envelope"></i> vutshilajb19@gmail.com</p>
+                    </div>
+
+                    <div class="hours">
+                        <h4>Opening Hours</h4>
+                        <ul>
+                            <li><span>Monday - Thursday</span> <span>11:00 - 22:00</span></li>
+                            <li><span>Friday - Saturday</span> <span>11:00 - 23:00</span></li>
+                            <li><span>Sunday</span> <span>12:00 - 21:00</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.260509300645!2d28.04421531502888!3d-26.193983983443587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c1b6c2d85e1%3A0x26cec92b7c8d6e0a!2sJohannesburg!5e0!3m2!1sen!2sza!4v1647856787896!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="checkout" id="checkout">
+        <div class="container">
+            <h2>Place Your Order</h2>
+            <div class="checkout-container">
+                <div class="order-summary">
+                    <h3>Your Order</h3>
+                    <div class="sitdown-required" id="sitdown-required">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Your order contains Hubbly items which are for SIT DOWN ONLY. Takeaway option has been disabled.
+                    </div>
+                    <div class="cart-items" id="cart-items">
+                        <p>No items selected yet.</p>
+                    </div>
+                    <div class="total">
+                        Total: <span id="total-amount">R0</span>
+                    </div>
+                </div>
+
+                <div class="customer-info">
+                    <h3>Customer Information</h3>
+                    <form id="order-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="orderType">Order Type *</label>
+                            <select id="orderType" required>
+                                <option value="pickup">Pickup</option>
+                                <option value="delivery">Delivery</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="address-section" style="display: none;">
+                            <label for="address">Delivery Address *</label>
+                            <textarea id="address" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Dining Preference</label>
+                            <div class="dining-options">
+                                <div class="dining-option" onclick="selectDining('sitdown')">
+                                    <i class="fas fa-chair"></i>
+                                    <p>Sit Down</p>
+                                </div>
+                                <div class="dining-option" onclick="selectDining('takeaway')">
+                                    <i class="fas fa-utensils"></i>
+                                    <p>Takeaway</p>
+                                </div>
+                            </div>
+                            <input type="hidden" id="dining-preference" value="sitdown">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="instructions">Special Instructions</label>
+                            <textarea id="instructions" rows="3" placeholder="Any special requests or dietary requirements?"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Payment Method *</label>
+                            <div class="payment-options">
+                                <div class="payment-option" onclick="selectPayment('whatsapp')">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <p>Pay via WhatsApp</p>
+                                </div>
+                                <div class="payment-option" onclick="selectPayment('cash')">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <p>Cash on Delivery</p>
+                                </div>
+                            </div>
+                            <input type="hidden" id="payment-method" required>
+                        </div>
+
+                        <button type="button" class="btn" onclick="generateReceipt()" style="width: 100%;">Place Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Our Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Crafting Culinary Excellence Since 2024</h3>
+                    <p>At The Kitchen, we believe that great food starts with passion and quality ingredients. Our chefs craft each dish with care, from our signature gourmet burgers to our crispy wings and fresh wraps.</p>
+                    <p>We source locally whenever possible and are committed to sustainable practices that respect our environment and community.</p>
+                    <p>Whether you're joining us for a quick lunch or a relaxed dinner, we promise an unforgettable dining experience that will keep you coming back for more.</p>
+                    <a href="#location" class="btn">Visit Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="imagess/imagess/about.jpg" alt="The Kitchen interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup Modal for Order Summary -->
+    <div id="receipt-popup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-popup" onclick="closePopup()">×</button>
+            <h2>Order Summary</h2>
+            <div id="popup-receipt-content"></div>
+            <div class="popup-buttons">
+                <button class="btn" onclick="closePopup()">Edit Order</button>
+                <a id="popup-whatsapp-link" class="btn" target="_blank" style="display: none; background: #25D366;">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>The Kitchen</h3>
+                    <p>Experience gourmet burgers, wings, wraps and more in a unique culinary atmosphere.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#specials">Specials</a></li>
+                        <li><a href="#location">Location</a></li>
+                        <li><a href="#checkout">Order Now</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/fT61x6fkVHuWUwk68" target="_blank">View on Google Maps</a></li>
+                        <li><i class="fas fa-phone"></i> 079 094 3751</li>
+                        <li><i class="fas fa-envelope"></i> vutshilajb19@gmail.com</li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul>
+                        <li>Mon - Thu: 11:00 - 22:00</li>
+                        <li>Fri - Sat: 11:00 - 23:00</li>
+                        <li>Sunday: 12:00 - 21:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 The Kitchen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let selectedPayment = '';
+        let currentReceiptText = '';
+        let hasSitdownOnlyItem = false;
+        let diningPreference = 'sitdown';
+
+        // Function to create custom popup for chips upsell
+        function showChipsUpsell(itemName, price, callback) {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            // Create popup content
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                background: white;
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+                max-width: 400px;
+                width: 90%;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                animation: slideUp 0.3s ease;
+                border: 3px solid var(--primary);
+            `;
+
+            popup.innerHTML = `
+                <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">🍟</div>
+                <h3 style="color: var(--dark); margin-bottom: 10px; font-size: 1.5rem;">Upgrade Your ${itemName}</h3>
+                <p style="color: #666; margin-bottom: 25px; line-height: 1.5;">
+                    Would you like to add <strong style="color: var(--primary);">crispy golden chips</strong>
+                    to your meal for just <strong style="color: var(--primary);">R20 more</strong>?
+                </p>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button class="upsell-btn upsell-no" style="
+                        padding: 12px 25px;
+                        background: #f8f9fa;
+                        color: #666;
+                        border: 2px solid #ddd;
+                        border-radius: 25px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        flex: 1;
+                    ">No Thanks</button>
+                    <button class="upsell-btn upsell-yes" style="
+                        padding: 12px 25px;
+                        background: var(--primary);
+                        color: white;
+                        border: 2px solid var(--primary);
+                        border-radius: 25px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        flex: 1;
+                    ">Yes, Add Chips! +R20</button>
+                </div>
+            `;
+
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+
+            // Add styles for animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                @keyframes slideUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                .upsell-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                }
+                .upsell-yes:hover {
+                    background: #e55a2b !important;
+                    border-color: #e55a2b !important;
+                }
+                .upsell-no:hover {
+                    background: #e9ecef !important;
+                    border-color: #adb5bd !important;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Add event listeners
+            popup.querySelector('.upsell-yes').addEventListener('click', () => {
+                document.body.removeChild(overlay);
+                document.head.removeChild(style);
+                showDrinkUpsell(itemName, price, true, callback);
+            });
+
+            popup.querySelector('.upsell-no').addEventListener('click', () => {
+                document.body.removeChild(overlay);
+                document.head.removeChild(style);
+                showDrinkUpsell(itemName, price, false, callback);
+            });
+
+            // Close on overlay click
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    document.body.removeChild(overlay);
+                    document.head.removeChild(style);
+                    showDrinkUpsell(itemName, price, false, callback);
+                }
+            });
+        }
+
+        // Function to create custom popup for drink upsell
+        function showDrinkUpsell(itemName, price, addedChips, callback) {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                background: white;
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+                max-width: 400px;
+                width: 90%;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                animation: slideUp 0.3s ease;
+                border: 3px solid var(--accent);
+            `;
+
+            const chipsText = addedChips ? ' with Chips' : '';
+            const currentPrice = addedChips ? price + 20 : price;
+
+            popup.innerHTML = `
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 15px;">🥤</div>
+                <h3 style="color: var(--dark); margin-bottom: 10px; font-size: 1.5rem;">Complete Your Meal</h3>
+                <p style="color: #666; margin-bottom: 25px; line-height: 1.5;">
+                    Thirsty? Add a <strong style="color: var(--accent);">refreshing drink</strong>
+                    to your ${itemName}${chipsText} for just <strong style="color: var(--accent);">R25 more</strong>!
+                </p>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                    <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">Current Total:</div>
+                    <div style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">R${currentPrice}</div>
+                    <div style="font-size: 0.9rem; color: #666; margin-top: 5px;">+ R25 = R${currentPrice + 25}</div>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button class="drink-btn drink-no" style="
+                        padding: 12px 25px;
+                        background: #f8f9fa;
+                        color: #666;
+                        border: 2px solid #ddd;
+                        border-radius: 25px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        flex: 1;
+                    ">No Thanks</button>
+                    <button class="drink-btn drink-yes" style="
+                        padding: 12px 25px;
+                        background: var(--accent);
+                        color: white;
+                        border: 2px solid var(--accent);
+                        border-radius: 25px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        flex: 1;
+                    ">Yes, Add Drink! +R25</button>
+                </div>
+            `;
+
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+
+            // Add event listeners
+            popup.querySelector('.drink-yes').addEventListener('click', () => {
+                document.body.removeChild(overlay);
+                const finalItemName = addedChips ? `${itemName} with Chips & Drink` : `${itemName} with Drink`;
+                const finalPrice = addedChips ? price + 45 : price + 25;
+                callback(finalItemName, finalPrice);
+            });
+
+            popup.querySelector('.drink-no').addEventListener('click', () => {
+                document.body.removeChild(overlay);
+                const finalItemName = addedChips ? `${itemName} with Chips` : itemName;
+                const finalPrice = addedChips ? price + 20 : price;
+                callback(finalItemName, finalPrice);
+            });
+
+            // Close on overlay click
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    document.body.removeChild(overlay);
+                    const finalItemName = addedChips ? `${itemName} with Chips` : itemName;
+                    const finalPrice = addedChips ? price + 20 : price;
+                    callback(finalItemName, finalPrice);
+                }
+            });
+        }
+
+        // Function to offer chips upsell when adding burgers
+        function offerChipsUpsell(itemName, price) {
+            showChipsUpsell(itemName, price, (finalItemName, finalPrice) => {
+                addToCart(finalItemName, finalPrice);
+            });
+        }
+
+        // Add to cart functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add to cart buttons for burgers - with upsell
+            document.querySelectorAll('#burgers-category .add-to-cart').forEach(button => {
+                button.addEventListener('click', function () {
+                    const item = this.getAttribute('data-item');
+                    const price = parseInt(this.getAttribute('data-price'));
+
+                    offerChipsUpsell(item, price);
+                });
+            });
+
+            // Regular add to cart for other items (no upsell)
+            document.querySelectorAll('.menu-category:not(#burgers-category) .add-to-cart').forEach(button => {
+                button.addEventListener('click', function () {
+                    const item = this.getAttribute('data-item');
+                    const price = parseInt(this.getAttribute('data-price'));
+                    const sitdownOnly = this.getAttribute('data-sitdown-only') === 'true';
+
+                    addToCart(item, price, sitdownOnly);
+                });
+            });
+
+            // Menu tabs
+            document.querySelectorAll('.menu-tab').forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.menu-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    // Get the category
+                    const category = this.getAttribute('data-category');
+
+                    // Hide all menu categories with animation
+                    document.querySelectorAll('.menu-category').forEach(cat => {
+                        if (cat.classList.contains('active')) {
+                            cat.style.opacity = '0';
+                            cat.style.transform = 'translateX(-50px)';
+                            setTimeout(() => {
+                                cat.classList.remove('active');
+                            }, 300);
+                        }
+                    });
+
+                    // Show the selected category with animation
+                    setTimeout(() => {
+                        const targetCategory = document.getElementById(category + '-category');
+                        targetCategory.classList.add('active');
+                        setTimeout(() => {
+                            targetCategory.style.opacity = '1';
+                            targetCategory.style.transform = 'translateX(0)';
+                        }, 50);
+                    }, 300);
+                });
+            });
+
+            // Order type change
+            document.getElementById('orderType').addEventListener('change', function () {
+                updateOrderType();
+            });
+
+            // Initialize cart
+            updateCart();
+            selectDining('sitdown'); // Set default dining preference
+        });
+
+        function addToCart(itemName, price, sitdownOnly = false) {
+            cart.push({ item: itemName, price: price, sitdownOnly: sitdownOnly });
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            if (sitdownOnly) {
+                hasSitdownOnlyItem = true;
+            }
+
+            updateCart();
+
+            // Show confirmation
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Added! 🎉';
+            btn.style.background = '#25D366';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }
+
+        function removeFromCart(index) {
+            // Check if we're removing a sitdown-only item
+            if (cart[index].sitdownOnly) {
+                // Check if there are any other sitdown-only items
+                const remainingSitdownItems = cart.filter((item, i) => i !== index && item.sitdownOnly);
+                if (remainingSitdownItems.length === 0) {
+                    hasSitdownOnlyItem = false;
+                }
+            }
+
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        }
+
+        function selectDining(preference) {
+            diningPreference = preference;
+            document.querySelectorAll('.dining-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            document.getElementById('dining-preference').value = preference;
+
+            // If Hubbly is in cart, force sit down
+            if (hasSitdownOnlyItem && preference === 'takeaway') {
+                setTimeout(() => {
+                    selectDining('sitdown');
+                    alert('Hubbly items are for sit down only. Dining preference has been set to "Sit Down".');
+                }, 100);
+            }
+
+            updateDiningOptions();
+        }
+
+        function updateDiningOptions() {
+            const sitdownRequired = document.getElementById('sitdown-required');
+
+            if (hasSitdownOnlyItem) {
+                sitdownRequired.style.display = 'block';
+                // Force sit down if Hubbly is in cart
+                document.querySelectorAll('.dining-option').forEach(opt => {
+                    if (opt.querySelector('p').textContent === 'Takeaway') {
+                        opt.style.opacity = '0.5';
+                        opt.style.pointerEvents = 'none';
+                    }
+                });
+            } else {
+                sitdownRequired.style.display = 'none';
+                document.querySelectorAll('.dining-option').forEach(opt => {
+                    opt.style.opacity = '1';
+                    opt.style.pointerEvents = 'all';
+                });
+            }
+        }
+
+        function updateOrderType() {
+            const orderType = document.getElementById('orderType').value;
+            const addressSection = document.getElementById('address-section');
+
+            addressSection.style.display = orderType === 'delivery' ? 'block' : 'none';
+            updateCart();
+        }
+
+        function calculateDeliveryFee(subtotal) {
+            if (subtotal >= 100) {
+                return 15; // R15 for orders R100 and above
+            } else if (subtotal >= 50) {
+                return 10; // R10 for orders R50 to R99.99
+            } else {
+                return 0; // FREE delivery for orders below R50
+            }
+        }
+
+        function updateCart() {
+            const container = document.getElementById('cart-items');
+            const totalDisplay = document.getElementById('total-amount');
+            const orderType = document.getElementById('orderType').value;
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p>No items selected yet.</p>';
+                totalDisplay.textContent = 'R0';
+                hasSitdownOnlyItem = false;
+                updateDiningOptions();
+                return;
+            }
+
+            let subtotal = 0;
+            cart.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+
+                // Add sitdown-only indicator if applicable
+                const sitdownIndicator = item.sitdownOnly ? ' <span style="color: var(--primary); font-weight: 600;">(SIT DOWN ONLY)</span>' : '';
+
+                div.innerHTML = `
+                        <div>
+                            <strong>${item.item}</strong>${sitdownIndicator} - R${item.price}
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                container.appendChild(div);
+                subtotal += item.price;
+            });
+
+            // Calculate delivery fee if delivery is selected
+            let deliveryFee = 0;
+            let total = subtotal;
+
+            if (orderType === 'delivery') {
+                deliveryFee = calculateDeliveryFee(subtotal);
+                total = subtotal + deliveryFee;
+            }
+
+            // Display subtotal and total
+            if (orderType === 'delivery') {
+                container.innerHTML += `
+                        <div class="cart-item" style="border-top: 2px solid #eee; padding-top: 15px;">
+                            <div><strong>Subtotal</strong></div>
+                            <div><strong>R${subtotal}</strong></div>
+                        </div>
+                        <div class="cart-item">
+                            <div>Delivery Fee</div>
+                            <div>${deliveryFee === 0 ? 'FREE 🎉' : 'R' + deliveryFee}</div>
+                        </div>
+                    `;
+            }
+
+            totalDisplay.textContent = 'R' + total;
+
+            // Update dining options based on cart contents
+            updateDiningOptions();
+        }
+
+        function selectPayment(method) {
+            selectedPayment = method;
+            document.querySelectorAll('.payment-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            document.getElementById('payment-method').value = method;
+        }
+
+        function generateReceipt() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const orderType = document.getElementById('orderType').value;
+            const address = document.getElementById('address').value;
+            const instructions = document.getElementById('instructions').value;
+
+            if (!name || !phone || !orderType) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            if (orderType === 'delivery' && !address) {
+                alert('Please provide a delivery address.');
+                return;
+            }
+            if (cart.length === 0) {
+                alert('Please add at least one item to your order.');
+                return;
+            }
+            if (!selectedPayment) {
+                alert('Please select a payment method.');
+                return;
+            }
+
+            let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+
+            // Calculate delivery fee
+            let deliveryFee = 0;
+            if (orderType === 'delivery') {
+                deliveryFee = calculateDeliveryFee(subtotal);
+            }
+
+            let total = subtotal + deliveryFee;
+
+            let itemsList = cart.map(i => {
+                const sitdownNote = i.sitdownOnly ? ' (SIT DOWN ONLY)' : '';
+                return `- ${i.item}${sitdownNote} (R${i.price})`;
+            }).join('\n');
+
+            // Delivery fee explanation
+            let deliveryExplanation = '';
+            if (orderType === 'delivery') {
+                if (subtotal >= 100) {
+                    deliveryExplanation = '🚚 Delivery: R15 (Standard fee)';
+                } else if (subtotal >= 50) {
+                    deliveryExplanation = '🚚 Delivery: R10 (Discounted - orders R50+)';
+                } else {
+                    deliveryExplanation = '🚚 Delivery: FREE 🎉';
+                }
+            }
+
+            // Add sitdown-only warning if applicable
+            const sitdownWarning = hasSitdownOnlyItem ? '\n⚠️ NOTE: This order contains Hubbly items which are for SIT DOWN ONLY\n' : '';
+
+            currentReceiptText = `🍽️ THE KITCHEN ORDER 🍽️\n\n` +
+                `👤 Name: ${name}\n` +
+                `📞 Phone: ${phone}\n` +
+                `📦 Order Type: ${orderType.toUpperCase()}\n` +
+                `${orderType === 'delivery' ? '📍 Address: ' + address + '\n' : ''}` +
+                `🍽️ Dining: ${diningPreference === 'sitdown' ? 'Sit Down' : 'Takeaway'}\n` +
+                `💳 Payment: ${selectedPayment === 'whatsapp' ? 'Pay via WhatsApp' : 'Cash on Delivery'}\n` +
+                `${instructions ? '📝 Special Instructions: ' + instructions + '\n' : ''}\n` +
+                `🛒 ITEMS:\n${itemsList}\n\n` +
+                `💰 SUBTOTAL: R${subtotal}\n` +
+                `${deliveryFee > 0 ? deliveryExplanation + '\n' : deliveryExplanation}` +
+                `${sitdownWarning}` +
+                `💰 TOTAL: R${total}\n\n` +
+                `🎉 Thank you for your order!\n` +
+                `We'll contact you shortly to confirm.`;
+
+            // Your WhatsApp number
+            const whatsappNumber = '27680003896';
+            const encoded = encodeURIComponent(currentReceiptText);
+
+            // Direct WhatsApp link to your number
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encoded}`;
+
+            // Show popup
+            showPopup(currentReceiptText, whatsappLink);
+        }
+
+        function showPopup(receiptText, whatsappLink) {
+            const popup = document.getElementById('receipt-popup');
+            const content = document.getElementById('popup-receipt-content');
+            const whatsappBtn = document.getElementById('popup-whatsapp-link');
+
+            // Format receipt text for better display
+            const formattedText = receiptText.replace(/\n/g, '<br>');
+
+            content.innerHTML = `
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; font-size: 14px; line-height: 1.4;">${receiptText}</pre>
+                    </div>
+                    <p style="text-align: center; color: #666; font-size: 0.9em;">
+                        Review your order above, then click "Send via WhatsApp" to confirm.
+                    </p>
+                `;
+
+            whatsappBtn.href = whatsappLink;
+            whatsappBtn.style.display = 'block';
+
+            popup.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('receipt-popup');
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Close popup when clicking outside content
+        document.getElementById('receipt-popup').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closePopup();
+            }
+        });
+    </script>
+</body>
+</html>
